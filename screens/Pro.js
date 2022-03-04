@@ -22,41 +22,32 @@ export default class Pro extends React.Component {
             <Block>
               <Block>
                 <Image source={Images.ArgonLogo}
-                  style={{ marginBottom: theme.SIZES.BASE * 1.5 }}/>
+                  style={{ marginBottom: theme.SIZES.BASE * 1.5 }} />
               </Block>
               <Block >
                 <Block>
-                  <Text color="white" size={60}>Argon</Text>
-                </Block>
-                <Block>
-                  <Text color="white" size={60}>Design</Text>
-                </Block>
-                <Block row>
-                  <Text color="white" size={60}>System</Text>
-                  <Block middle style={styles.pro}>
-                    <Text size={16} color="white">PRO</Text>
-                  </Block>
+                  <Text color="white" size={70}>EL TERE</Text>
                 </Block>
               </Block>
-              <Text size={16} color='rgba(255,255,255,0.6)' style={{ marginTop: 35 }}>
-                Take advantage of all the features and screens made upon Galio Design System, coded on React Native for both.
-              </Text>
-              <Block row style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
-                <Image
-                  source={Images.iOSLogo}
-                  style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }} />
-                <Image
-                  source={Images.androidLogo}
-                  style={{ height: 38, width: 140 }} />
-              </Block>
-              <Button
-                shadowless
-                style={styles.button}
-                color={argonTheme.COLORS.INFO}
-                onPress={() => Linking.openURL('https://www.creative-tim.com/product/argon-pro-react-native').catch((err) => console.error('An error occurred', err))}>
-                <Text bold color={theme.COLORS.WHITE}>BUY NOW</Text>
-              </Button>
             </Block>
+            <Text size={16} color='rgba(255,255,255,0.6)' style={{ marginTop: 35 }}>
+              Tu mejor aliado para hacer mercado.
+            </Text>
+            <Block row style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
+              <Image
+                source={Images.iOSLogo}
+                style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }} />
+              <Image
+                source={Images.androidLogo}
+                style={{ height: 38, width: 140 }} />
+            </Block>
+            <Button
+              shadowless
+              style={styles.button}
+              color={argonTheme.COLORS.INFO}
+              onPress={() => Linking.openURL('').catch((err) => console.error('An error occurred', err))}>
+              <Text bold color={theme.COLORS.WHITE}>INICIAR SESIÓN</Text>
+            </Button>
           </Block>
         </Block>
       </Block>
