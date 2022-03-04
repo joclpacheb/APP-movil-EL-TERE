@@ -1,0 +1,5 @@
+/.expo
+/.vscode
+/.watchmanconfig
+/node_modules
+/package-lock.json
