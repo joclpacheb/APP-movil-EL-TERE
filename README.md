@@ -1,6 +1,6 @@
 # EL TERE
 
-Este es el código front end para el desarrollo de la aplicación móvil del Sistema de Información EL TERE. Desarrollado por el equipo AURORA de la asignatura Sistemas de Información en la Universidad Centroccidental Lisandro Alvarado.
+This is the front end code for the development of the EL TERE Information System mobile application. Developed by the AURORA team of the Information Systems subject at the Universidad Centroccidental Lisandro Alvarado.
 
 ## Installation
 
