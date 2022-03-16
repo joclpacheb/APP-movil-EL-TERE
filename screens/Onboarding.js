@@ -22,12 +22,20 @@ class Onboarding extends React.Component {
         <StatusBar hidden />
         <Block flex center>
           <ImageBackground
-            source={Images.Onboarding}
+            source={Images.Onboarding} //imagen naranja de fondo
             style={{ height, width, zIndex: 1 }}
           />
         </Block>
+
+        <Block middle style={styles.avatarContainer}>
+          <Image
+            source={{ uri: Images.ProfilePicture }}
+            style={styles.avatar}
+          />
+        </Block>
+
         <Block center>
-          <Image source={Images.LogoOnboarding} style={styles.logo} />
+          <Image source={Images.logoBlanco} style={styles.logo} />
         </Block>
         <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
@@ -38,8 +46,8 @@ class Onboarding extends React.Component {
                 </Text>
               </Block>
               <Block style={styles.subTitle}>
-                <Text color="white" size={16}>
-                  Bienvenido/a la App Móvil de EL TERE.  {"\n"}¡Somos tu mejor aliado para hacer mercado!
+                <Text color="white" size={18}>
+                  {"\n"}¡Somos tu mejor aliado para hacer mercado!
                 </Text>
               </Block>
             </Block>
@@ -49,13 +57,14 @@ class Onboarding extends React.Component {
                 color={argonTheme.COLORS.SECONDARY}
                 onPress={() => navigation.navigate("App")}
                 textStyle={{ color: argonTheme.COLORS.BLACK }}
+
               >
-                Comienza aquí
+                INICIAR SESIÓN
               </Button>
             </Block>
           </Block>
         </Block>
-      </Block>
+      </Block >
     );
   }
 }
@@ -72,22 +81,33 @@ const styles = StyleSheet.create({
   },
   button: {
     width: width - theme.SIZES.BASE * 4,
-    height: theme.SIZES.BASE * 3,
+    height: theme.SIZES.BASE * 4,
     shadowRadius: 0,
-    shadowOpacity: 0
+    shadowOpacity: 0,
+    borderRadius: 30
+  },
+  avatar: {
+    width: 124,
+    height: 124,
+    borderRadius: 62,
+    borderWidth: 0
+  },
+  avatarContainer: {
+    position: "relative",
+    marginTop: -80
   },
   logo: {
-    width: 200,
-    height: 60,
+    width: 300,
+    height: 300,
     zIndex: 2,
     position: 'relative',
-    marginTop: '-50%'
+    marginTop: '-80%'
   },
   title: {
-    marginTop: '-5%'
+    marginTop: '-0%'
   },
   subTitle: {
-    marginTop: 20
+    marginTop: 10
   }
 });
 
