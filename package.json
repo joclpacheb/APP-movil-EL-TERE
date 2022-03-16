@@ -1,11 +1,10 @@
 {
-  "name": "argon-react-native",
+  "name": "el-tere-app-mobile",
   "version": "1.7.1",
-  "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
+  "description": "Tu mejor Aliado para hacer mercado",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
+  "start": "expo start --port 19002",    "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
   },

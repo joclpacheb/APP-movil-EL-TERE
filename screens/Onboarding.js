@@ -33,13 +33,13 @@ class Onboarding extends React.Component {
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
               <Block>
-                <Text color="white" size={60}>
-                  EL TERE
+                <Text color="white" size={70} >
+                  Hola,
                 </Text>
               </Block>
               <Block style={styles.subTitle}>
                 <Text color="white" size={16}>
-                  Tu mejor aliado para hacer mercado.
+                  Bienvenido/a la App Móvil de EL TERE.  {"\n"}¡Somos tu mejor aliado para hacer mercado!
                 </Text>
               </Block>
             </Block>
