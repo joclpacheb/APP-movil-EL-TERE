@@ -15,7 +15,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="shop"
             family="ArgonExtra"
-            size={14}
+            size={20}
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
@@ -24,7 +24,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="map-big"
             family="ArgonExtra"
-            size={14}
+            size={20}
             color={focused ? "white" : argonTheme.COLORS.ERROR}
           />
         );
@@ -33,7 +33,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="spaceship"
             family="ArgonExtra"
-            size={14}
+            size={20}
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
@@ -42,7 +42,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="chart-pie-35"
             family="ArgonExtra"
-            size={14}
+            size={20}
             color={focused ? "white" : argonTheme.COLORS.WARNING}
           />
         );
@@ -51,7 +51,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="calendar-date"
             family="ArgonExtra"
-            size={14}
+            size={20}
             color={focused ? "white" : argonTheme.COLORS.INFO}
           />
         );
@@ -59,7 +59,7 @@ class DrawerItem extends React.Component {
         return (<Icon
           name="spaceship"
           family="ArgonExtra"
-          size={14}
+          size={20}
           color={focused ? "white" : "rgba(0,0,0,0.5)"}
         />);
       case "Log out":
@@ -83,8 +83,8 @@ class DrawerItem extends React.Component {
         onPress={() =>
           title == "Getting Started"
             ? Linking.openURL(
-                "https://demos.creative-tim.com/argon-pro-react-native/docs/"
-              ).catch(err => console.error("An error occurred", err))
+              "https://demos.creative-tim.com/argon-pro-react-native/docs/"
+            ).catch(err => console.error("An error occurred", err))
             : navigation.navigate(title)
         }
       >

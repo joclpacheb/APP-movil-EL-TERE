@@ -10,6 +10,8 @@ import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
+import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -26,21 +28,10 @@ class Register extends React.Component {
             <Block style={styles.registerContainer}>
               <Block flex={0.25} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={12}>
-                  Sign up with
+                  Inicia sesión con tu cuenta de:
                 </Text>
                 <Block row style={{ marginTop: theme.SIZES.BASE }}>
-                  <Button style={{ ...styles.socialButtons, marginRight: 30 }}>
-                    <Block row>
-                      <Icon
-                        name="logo-github"
-                        family="Ionicon"
-                        size={14}
-                        color={"black"}
-                        style={{ marginTop: 2, marginRight: 5 }}
-                      />
-                      <Text style={styles.socialTextButtons}>GITHUB</Text>
-                    </Block>
-                  </Button>
+
                   <Button style={styles.socialButtons}>
                     <Block row>
                       <Icon
@@ -58,7 +49,7 @@ class Register extends React.Component {
               <Block flex>
                 <Block flex={0.17} middle>
                   <Text color="#8898AA" size={12}>
-                    Or sign up the classic way
+                    O registra tu cuenta llenando estos campos:
                   </Text>
                 </Block>
                 <Block flex center>
@@ -70,7 +61,7 @@ class Register extends React.Component {
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
-                        placeholder="Name"
+                        placeholder="Nombres"
                         iconContent={
                           <Icon
                             size={16}
@@ -85,7 +76,7 @@ class Register extends React.Component {
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
-                        placeholder="Email"
+                        placeholder="Correo Electrónico"
                         iconContent={
                           <Icon
                             size={16}
@@ -101,7 +92,7 @@ class Register extends React.Component {
                       <Input
                         password
                         borderless
-                        placeholder="Password"
+                        placeholder="Contraseña"
                         iconContent={
                           <Icon
                             size={16}
@@ -114,11 +105,11 @@ class Register extends React.Component {
                       />
                       <Block row style={styles.passwordCheck}>
                         <Text size={12} color={argonTheme.COLORS.MUTED}>
-                          password strength:
+                          Seguridad de la contraseña:
                         </Text>
                         <Text bold size={12} color={argonTheme.COLORS.SUCCESS}>
                           {" "}
-                          strong
+                          fuerte
                         </Text>
                       </Block>
                     </Block>
@@ -128,23 +119,23 @@ class Register extends React.Component {
                           borderWidth: 3
                         }}
                         color={argonTheme.COLORS.PRIMARY}
-                        label="I agree with the"
+                        label="Acepto los"
                       />
                       <Button
-                        style={{ width: 100 }}
+                        style={styles.termsButton}
                         color="transparent"
                         textStyle={{
                           color: argonTheme.COLORS.PRIMARY,
                           fontSize: 14
                         }}
                       >
-                        Privacy Policy
+                        Términos y condiciones
                       </Button>
                     </Block>
                     <Block middle>
                       <Button color="primary" style={styles.createButton}>
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          CREATE ACCOUNT
+                          CREAR UNA CUENTA
                         </Text>
                       </Button>
                     </Block>
@@ -178,25 +169,27 @@ const styles = StyleSheet.create({
   socialConnect: {
     backgroundColor: argonTheme.COLORS.WHITE,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "#8898AA"
+
   },
   socialButtons: {
     width: 120,
     height: 40,
     backgroundColor: "#fff",
-    shadowColor: argonTheme.COLORS.BLACK,
+    shadowColor: argonTheme.COLORS.ERROR,
     shadowOffset: {
       width: 0,
       height: 4
     },
     shadowRadius: 8,
-    shadowOpacity: 0.1,
+    borderWidth: 1,
+    borderRadius: 10,
+    shadowOpacity: 0.5,
     elevation: 1
   },
   socialTextButtons: {
     color: argonTheme.COLORS.PRIMARY,
     fontWeight: "800",
-    fontSize: 14
+    fontSize: 14,
   },
   inputIcons: {
     marginRight: 12
@@ -209,6 +202,10 @@ const styles = StyleSheet.create({
   createButton: {
     width: width * 0.5,
     marginTop: 25
+  },
+  termsButton: {
+    width: width * 0.5,
+    elevation: 0
   }
 });
 

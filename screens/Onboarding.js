@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     height: theme.SIZES.BASE * 4,
     shadowRadius: 0,
     shadowOpacity: 0,
-    borderRadius: 30
+    borderRadius: 30,
   },
   avatar: {
     width: 124,
