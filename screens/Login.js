@@ -5,7 +5,8 @@ import {
   Dimensions,
   Image,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  View
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
@@ -101,61 +102,43 @@ class Register extends React.Component {
                           CREAR UNA CUENTA
                         </Text>
                       </Button>
-                      <Button //corregir, colocar en una sola fila los dos botones de olvide mi contraseña y entrar como invitado
-                        style={styles.termsButton}
-                        color="transparent"
-                        textStyle={{
-                          color: argonTheme.COLORS.PRIMARY,
-                          fontSize: 14
-                        }}
-                      >
-                        Olvidé mi contraseña
-                      </Button>
+
+                      <View style={styles.container}>
+                        <View style={styles.item}>
+                          <Button
+                            style={styles.termsButton}
+                            color="transparent"
+                            textStyle={{
+                              color: argonTheme.COLORS.PRIMARY,
+                              fontSize: 14
+                            }}
+                          >
+                            Olvidé mi contraseña
+                          </Button>
+                        </View>
+
+                      </View>
 
                     </Block>
 
-                    <Button
-                      style={styles.termsButton}
-                      color="transparent"
-                      textStyle={{
-                        color: argonTheme.COLORS.PRIMARY,
-                        fontSize: 14
-                      }}
-                    >
-                      Entrar como Invitado
-                    </Button>
+
                   </KeyboardAvoidingView>
 
                 </Block>
-                <Button
-                  style={styles.termsButton}
-                  color="transparent"
-                  textStyle={{
-                    color: argonTheme.COLORS.PRIMARY,
-                    fontSize: 14
-                  }}
-                >
-                  Entrar como Invitado
-                </Button>
+
               </Block>
 
 
               <Block flex={0.40} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={16}>
-                  Inicia sesión con tu cuenta de:
+                  ¿Primera vez aquí?
                 </Text>
                 <Block row style={{ marginTop: theme.SIZES.BASE }}>
 
                   <Button style={styles.socialButtons}>
                     <Block row>
-                      <Icon
-                        name="logo-google"
-                        family="Ionicon"
-                        size={14}
-                        color={argonTheme.COLORS.PRIMARY}
-                        style={{ marginTop: 2, marginRight: 5 }}
-                      />
-                      <Text style={styles.socialTextButtons}>GOOGLE</Text>
+
+                      <Text style={styles.socialTextButtons}>Entrar como Invitado/a</Text>
                     </Block>
                   </Button>
 
@@ -192,7 +175,7 @@ const styles = StyleSheet.create({
 
   },
   socialButtons: {
-    width: 120,
+    width: 170,
     height: 40,
     backgroundColor: "#fff",
     shadowColor: argonTheme.COLORS.ERROR,
@@ -205,6 +188,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     shadowOpacity: 0.5,
     elevation: 1
+  },
+  container: {
+    flex: 1,
+  },
+  item: {
+    width: '50%' // is 50% of container width
   },
   socialTextButtons: {
     color: argonTheme.COLORS.PRIMARY,
@@ -228,7 +217,7 @@ const styles = StyleSheet.create({
 
   },
   termsButton: {
-    width: width * 0.5,
+    width: width * 0.4,
     elevation: 0,
     marginTop: 0
   }

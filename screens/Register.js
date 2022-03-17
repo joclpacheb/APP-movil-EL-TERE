@@ -26,7 +26,7 @@ class Register extends React.Component {
         >
           <Block safe flex middle>
             <Block style={styles.registerContainer}>
-              <Block flex={0.25} middle style={styles.socialConnect}>
+              {/* <Block flex={0.25} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={16}>
                   Crea una cuenta con:
                 </Text>
@@ -45,11 +45,11 @@ class Register extends React.Component {
                     </Block>
                   </Button>
                 </Block>
-              </Block>
+              </Block> */}
               <Block flex>
                 <Block flex={0.17} middle>
                   <Text color="#8898AA" size={16}>
-                    O registra tu cuenta llenando estos campos:
+                    Registra tu cuenta llenando estos campos:
                   </Text>
                 </Block>
                 <Block flex center>
@@ -153,7 +153,7 @@ class Register extends React.Component {
 const styles = StyleSheet.create({
   registerContainer: {
     width: width * 0.9,
-    height: height * 0.7,
+    height: height * 0.6,
     backgroundColor: "#F4F5F7",
     borderRadius: 4,
     shadowColor: argonTheme.COLORS.BLACK,
