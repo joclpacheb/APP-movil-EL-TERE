@@ -42,7 +42,7 @@ class Register extends React.Component {
               <Block flex>
                 <Block flex={0.2} middle>
                   <Text color="#8898AA" size={16}>
-                    Inicia sesión con tu usuario:
+                    Inicia sesión con tus datos:
                   </Text>
                 </Block>
                 <Block flex center>
@@ -56,7 +56,7 @@ class Register extends React.Component {
                       <Input
                         style={{ borderRadius: 20, elevation: 2 }}
                         borderless
-                        placeholder="Usuario o Correo Electrónico"
+                        placeholder="Correo Electrónico"
                         iconContent={
                           <Icon
                             size={16}
@@ -112,6 +112,9 @@ class Register extends React.Component {
                               color: argonTheme.COLORS.PRIMARY,
                               fontSize: 14
                             }}
+                            onPress={() => navigation.navigate("PasswordRecovery")} //aquí navega a la pantalla principal
+
+
                           >
                             Olvidé mi contraseña
                           </Button>
@@ -131,11 +134,13 @@ class Register extends React.Component {
 
               <Block flex={0.40} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={16}>
-                  ¿Primera vez aquí?
+                  ¿Primera vez usando la App?
                 </Text>
                 <Block row style={{ marginTop: theme.SIZES.BASE }}>
 
-                  <Button style={styles.socialButtons}>
+                  <Button style={styles.socialButtons}
+                    onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal 
+                  >
                     <Block row>
 
                       <Text style={styles.socialTextButtons}>Entrar como Invitado/a</Text>

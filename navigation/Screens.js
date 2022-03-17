@@ -16,6 +16,8 @@ import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Login from "../screens/Login";
+import PasswordRecovery from "../screens/PasswordRecovery";
+
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -191,7 +193,7 @@ export default function OnboardingStack(props) {
       <Stack.Screen name="App" component={AppStack} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Account" component={Register} />
-
+      <Stack.Screen name="PasswordRecovery" component={PasswordRecovery} />
     </Stack.Navigator>
   );
 }

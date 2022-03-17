@@ -17,6 +17,7 @@ const { width, height } = Dimensions.get("screen");
 
 class Register extends React.Component {
   render() {
+    const { navigation } = this.props;
     return (
       <Block flex middle>
         <StatusBar hidden />
@@ -66,7 +67,7 @@ class Register extends React.Component {
                           <Icon
                             size={16}
                             color={argonTheme.COLORS.ICON}
-                            name="hat-3"
+                            name="ic_mail_24px"
                             family="ArgonExtra"
                             style={styles.inputIcons}
                           />
@@ -133,7 +134,10 @@ class Register extends React.Component {
                       </Button>
                     </Block>
                     <Block middle>
-                      <Button color="primary" style={styles.createButton}>
+                      <Button color="primary" style={styles.createButton}
+                        onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+
+                      >
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                           CREAR UNA CUENTA
                         </Text>

@@ -64,7 +64,7 @@ class Header extends React.Component {
       case 'Home':
         return ([
           <BellButton key='chat-home' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-home' navigation={navigation} isWhite={white} />
+          <BasketButton key='abasket-home' navigation={navigation} isWhite={white} />
         ]);
       case 'Deals':
         return ([
@@ -112,7 +112,7 @@ class Header extends React.Component {
         right
         color="black"
         style={styles.search}
-        placeholder="What are you looking for?"
+        placeholder="Escribe aquí lo que estás buscando..."
         placeholderTextColor={'#8898AA'}
         onFocus={() => navigation.navigate('Pro')}
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
