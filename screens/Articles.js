@@ -19,20 +19,20 @@ const thumbMeasure = (width - 48 - 32) / 3;
 const cardWidth = width - theme.SIZES.BASE * 2;
 const categories = [
   {
-    title: "Music Album",
+    title: "Miércoles de Sopas",
     description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
+      "El evento favorito de la comunidad. Visítanos y comparte en familia las mejores sopas por tan solo 1$ durante este Jueves 4-4-2022",
     image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fit=crop&w=840&q=80",
-    price: "$125"
+      "https://saboryestilo.com.mx/wp-content/uploads/2020/11/Sopa-Papa.jpg",
+    price: "$1"
   },
   {
-    title: "Events",
+    title: "Ofertas de Semana Santa",
     description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
+      "Tenemos durante semana santa ofertas especiales para ti del 50% en nuestros productos de categoría Hortalizas.",
     image:
-      "https://images.unsplash.com/photo-1543747579-795b9c2c3ada?fit=crop&w=840&q=80",
-    price: "$35"
+      "https://blogmx.jacto.com/wp-content/uploads/2020/11/cultivo-de-hortalizas.jpg",
+    price: "50% de descuento"
   }
 ];
 
@@ -82,10 +82,10 @@ class Articles extends React.Component {
     return (
       <Block flex style={styles.group}>
         <Text bold size={16} style={styles.title}>
-          Cards
+          Eventos:
         </Text>
         <Block flex>
-          <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
+          {/* <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
             <Card item={articles[0]} horizontal />
             <Block flex row>
               <Card
@@ -97,7 +97,7 @@ class Articles extends React.Component {
             <Card item={articles[4]} full />
             <Block flex card shadow style={styles.category}>
               <ImageBackground
-                source={{ uri: Images.Products["View article"] }}
+                source={{ uri: Images.Products["Ver Categoría"] }}
                 style={[
                   styles.imageBlock,
                   { width: width - theme.SIZES.BASE * 2, height: 252 }
@@ -109,12 +109,12 @@ class Articles extends React.Component {
               >
                 <Block style={styles.categoryTitle}>
                   <Text size={18} bold color={theme.COLORS.WHITE}>
-                    View article
+                    Ver Categoría
                   </Text>
                 </Block>
               </ImageBackground>
             </Block>
-          </Block>
+          </Block> */}
           <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
             <ScrollView
               horizontal={true}
@@ -187,7 +187,7 @@ class Articles extends React.Component {
           showsVerticalScrollIndicator={false}
         >
           {this.renderCards()}
-          {this.renderAlbum()}
+          {/* {this.renderAlbum()} */}
         </ScrollView>
       </Block>
     );

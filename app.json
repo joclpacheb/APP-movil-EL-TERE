@@ -25,6 +25,9 @@
       "supportsTablet": true
     },
     "description": "EL TERE -SISTEMAS DE INFORMACIÓN - UCLA DCYT",
-    "githubUrl": "https://github.com/joclpacheb/APP-movil-EL-TERE"
+    "githubUrl": "https://github.com/joclpacheb/APP-movil-EL-TERE",
+    "android": {
+      "package": "com.joclpacheb.eltereappmobile"
+    }
   }
 }

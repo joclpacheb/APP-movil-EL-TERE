@@ -54,8 +54,7 @@ class Register extends React.Component {
 
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
-                        style={{ borderRadius: 20, elevation: 2 }}
-                        borderless
+                        style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
                         placeholder="Correo Electrónico"
                         iconContent={
                           <Icon
@@ -70,7 +69,7 @@ class Register extends React.Component {
                     </Block>
                     <Block width={width * 0.8}>
                       <Input
-                        style={{ borderRadius: 20, elevation: 2 }}
+                        style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
                         password
                         borderless
                         placeholder="Contraseña"
@@ -99,7 +98,7 @@ class Register extends React.Component {
 
                       >
                         <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
-                          CREAR UNA CUENTA
+                          ÚNETE A EL TERE
                         </Text>
                       </Button>
 
@@ -110,13 +109,16 @@ class Register extends React.Component {
                             color="transparent"
                             textStyle={{
                               color: argonTheme.COLORS.PRIMARY,
-                              fontSize: 14
+                              fontSize: 14,
+                              fontWeight: 'bold'
+
+
                             }}
                             onPress={() => navigation.navigate("PasswordRecovery")} //aquí navega a la pantalla principal
 
 
                           >
-                            Olvidé mi contraseña
+                            ¿Olvidaste tu contraseña?
                           </Button>
                         </View>
 
@@ -143,7 +145,7 @@ class Register extends React.Component {
                   >
                     <Block row>
 
-                      <Text style={styles.socialTextButtons}>Entrar como Invitado/a</Text>
+                      <Text style={styles.socialTextButtons}>ENTRAR COMO INVITADO/A</Text>
                     </Block>
                   </Button>
 
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     height: height * 0.6,
     backgroundColor: "#F4F5F7",
-    borderRadius: 4,
+    borderRadius: 24,
     shadowColor: argonTheme.COLORS.BLACK,
     shadowOffset: {
       width: 0,
@@ -177,10 +179,12 @@ const styles = StyleSheet.create({
   socialConnect: {
     backgroundColor: argonTheme.COLORS.WHITE,
     borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: argonTheme.COLORS.PRIMARY,
+    borderTopWidth: 2
 
   },
   socialButtons: {
-    width: 170,
+    width: width * 0.7,
     height: 40,
     backgroundColor: "#fff",
     shadowColor: argonTheme.COLORS.ERROR,
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
   socialTextButtons: {
     color: argonTheme.COLORS.PRIMARY,
     fontWeight: "800",
-    fontSize: 14
+    fontSize: 16
   },
   inputIcons: {
     marginRight: 12
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
 
   },
   termsButton: {
-    width: width * 0.4,
+    width: width * 0.5,
     elevation: 0,
     marginTop: 0
   }

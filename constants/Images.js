@@ -9,6 +9,7 @@ const ArgonLogo = require("../assets/imgs/argonlogo.png");
 const iOSLogo = require("../assets/imgs/ios.png");
 const androidLogo = require("../assets/imgs/android.png");
 const logoBlanco = require("../assets/imgs/LOGO-blanco-EL-TERE.png");
+const logoNormal = require("../assets/imgs/LOGO-EL-TERE.png");
 
 // internet imgs
 
@@ -40,5 +41,6 @@ export default {
   ArgonLogo,
   iOSLogo,
   androidLogo,
-  logoBlanco
+  logoBlanco,
+  logoNormal,
 };

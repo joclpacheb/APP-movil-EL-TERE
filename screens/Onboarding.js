@@ -41,11 +41,17 @@ class Onboarding extends React.Component {
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
               <Block>
-                <Text color="white" size={70} >
-                  Hola,
+                <Text color="white" bold size={70} >
+                  ¡Hola!
                 </Text>
               </Block>
               <Block style={styles.subTitle}>
+                <Text color="white" size={18}>
+                  {"\n"}Te damos la bienvenida a la App oficial
+                  de EL TERE.
+
+                </Text>
+
                 <Text color="white" size={18}>
                   {"\n"}¡Somos tu mejor aliado para hacer mercado!
                 </Text>
@@ -56,7 +62,7 @@ class Onboarding extends React.Component {
                 style={styles.button}
                 color={argonTheme.COLORS.SECONDARY}
                 onPress={() => navigation.navigate("Login")} //aquí navega a la pantalla de login
-                textStyle={{ color: argonTheme.COLORS.BLACK }}
+                textStyle={{ color: argonTheme.COLORS.PRIMARY }}
 
               >
                 COMIENZA AQUÍ

@@ -1,6 +1,5 @@
 import React from "react";
 import { Easing, Animated, Dimensions } from "react-native";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -16,6 +15,7 @@ import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Login from "../screens/Login";
+import Notifications from "../screens/Notifications";
 import PasswordRecovery from "../screens/PasswordRecovery";
 
 // drawer
@@ -47,6 +47,23 @@ function ElementsStack(props) {
       <Stack.Screen
         name="Pro"
         component={Pro}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title=""
+              back
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
         options={{
           header: ({ navigation, scene }) => (
             <Header
@@ -176,6 +193,7 @@ function HomeStack(props) {
           headerTransparent: true
         }}
       />
+
     </Stack.Navigator>
   );
 }

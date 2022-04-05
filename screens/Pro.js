@@ -34,12 +34,7 @@ export default class Pro extends React.Component {
               Tu mejor aliado para hacer mercado.
             </Text>
             <Block row style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
-              <Image
-                source={Images.iOSLogo}
-                style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }} />
-              <Image
-                source={Images.androidLogo}
-                style={{ height: 38, width: 140 }} />
+
             </Block>
             <Button
               shadowless

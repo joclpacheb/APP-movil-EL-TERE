@@ -9,7 +9,7 @@ export default {
     SUCCESS: '#2DCE89',
     WARNING: '#FB6340',
     /*not yet changed */
-    MUTED: '#ADB5BD',
+    MUTED: '#8898AA',
     INPUT: '#DCDCDC',
     INPUT_SUCCESS: '#7BDEB2',
     INPUT_ERROR: '#FCB3A4',
