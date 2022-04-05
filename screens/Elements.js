@@ -62,7 +62,7 @@ class Elements extends React.Component {
             </Button>
           </Block>
           <Block row space="evenly">
-            <Block flex left style={{marginTop: 8}}>
+            <Block flex left style={{ marginTop: 8 }}>
               <Select
                 defaultIndex={1}
                 options={["01", "02", "03", "04", "05"]}
@@ -358,6 +358,9 @@ class Elements extends React.Component {
           Navigation
         </Text>
         <Block>
+          <Block style={{ marginBottom: theme.SIZES.BASE }}>
+            <Header back title="Title" navigation={this.props.navigation} />
+          </Block>
           <Block style={{ marginBottom: theme.SIZES.BASE }}>
             <Header back title="Title" navigation={this.props.navigation} />
           </Block>

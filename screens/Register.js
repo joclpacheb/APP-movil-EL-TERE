@@ -9,7 +9,9 @@ import {
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
-import { Button, Icon, Input } from "../components";
+import {
+  Button, Icon, Input, Header
+} from "../components";
 import { Images, argonTheme } from "../constants";
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { Colors } from "react-native/Libraries/NewAppScreen";
@@ -32,11 +34,13 @@ class Register extends React.Component {
             source={Images.RegisterBackground}
             style={{ width, height, zIndex: 1 }}
           >
-
-            <Block safe flex middle>
+            <Block >
+              <Header back title="" navigation={this.props.navigation} transparent white />
+            </Block>
+            <Block safe flex center>
               <Block row space="evenly">
                 <Block flex left style={{ paddingLeft: 30 }}>
-                  <Text color="white" bold size={45} style={{ textAlign: 'left' }} >
+                  <Text color="white" bold size={45} style={{ textAlign: 'left', marginTop: 5 }} >
                     Únete a{"\n"}EL TERE
                   </Text>
                 </Block>
@@ -127,6 +131,20 @@ class Register extends React.Component {
                           password
                           borderless
                           placeholder="Repite tu Contraseña"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="padlock-unlocked"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                        <Input
+                          style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                          borderless
+                          placeholder="Teléfono"
                           iconContent={
                             <Icon
                               size={16}

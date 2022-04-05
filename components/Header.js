@@ -191,13 +191,13 @@ class Header extends React.Component {
           left={
             <Icon
               name={back ? 'chevron-left' : "menu"} family="entypo"
-              size={20} onPress={this.handleLeftPress}
+              size={50} onPress={this.handleLeftPress}
               color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
-              style={{ marginTop: 2 }}
+              style={{ marginTop: 0 }}
             />
 
           }
-          leftStyle={{ paddingVertical: 12, flex: 0.2 }}
+          leftStyle={{ paddingVertical: 12, flex: 0.5 }}
           titleStyle={[
             styles.title,
             { color: argonTheme.COLORS[white ? 'WHITE' : 'HEADER'] },
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     borderColor: argonTheme.COLORS.BORDER
   },
   options: {
-    marginBottom: 24,
+    marginBottom: 10,
     marginTop: 10,
     elevation: 4,
   },
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     width: width * 0.35,
     borderRadius: 0,
     borderWidth: 0,
-    height: 24,
+    height: 10,
     elevation: 0,
   },
   tabTitle: {
