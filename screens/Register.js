@@ -4,7 +4,8 @@ import {
   ImageBackground,
   Dimensions,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
@@ -20,43 +21,82 @@ class Register extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <Block flex middle>
-        <StatusBar barStyle="light-content" />
-        <ImageBackground
-          source={Images.RegisterBackground}
-          style={{ width, height, zIndex: 1 }}
-        >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.articles}>
 
-          <Block safe flex middle>
-            <Block row space="evenly">
-              <Block flex left style={{ paddingLeft: 30 }}>
-                <Text color="white" bold size={45} style={{ textAlign: 'left' }} >
-                  Únete a{"\n"}EL TERE
-                </Text>
-              </Block>
-            </Block>
 
-            <Block style={styles.registerContainer}>
-              <Block flex >
-                <Block flex={0.25} >
-                  <Text color="#5A7E64" size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
-                    ¡Queremos conocerte!</Text>
-                  <Text color="#8898AA" size={16} >
-                    Crea tu perfil personalizado llenando los siguientes campos:
+        <Block flex middle>
+          <StatusBar barStyle="light-content" />
+          <ImageBackground
+            source={Images.RegisterBackground}
+            style={{ width, height, zIndex: 1 }}
+          >
+
+            <Block safe flex middle>
+              <Block row space="evenly">
+                <Block flex left style={{ paddingLeft: 30 }}>
+                  <Text color="white" bold size={45} style={{ textAlign: 'left' }} >
+                    Únete a{"\n"}EL TERE
                   </Text>
                 </Block>
+              </Block>
 
-                <Block flex center>
-                  <KeyboardAvoidingView
-                    style={{ flex: 1 }}
-                    behavior="padding"
-                    enabled
-                  >
-                    <Block row space="evenly">
-                      <Block flex left style={{ paddingRight: 9 }}>
+              <Block style={styles.registerContainer}>
+                <Block flex >
+                  <Block flex={0.25} >
+                    <Text color="#5A7E64" size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
+                      ¡Queremos conocerte!</Text>
+                    <Text color="#8898AA" size={16} >
+                      Crea tu perfil personalizado llenando los siguientes campos:
+                    </Text>
+                  </Block>
+
+                  <Block flex center>
+                    <KeyboardAvoidingView
+                      style={{ flex: 6 }}
+                      behavior="padding"
+                      enabled
+                    >
+                      <Block row space="evenly">
+                        <Block flex left style={{ paddingRight: 9 }}>
+                          <Input
+                            style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                            placeholder="Nombre"
+                            iconContent={
+                              <Icon
+                                size={16}
+                                color={argonTheme.COLORS.ICON}
+                                name="ic_mail_24px"
+                                family="ArgonExtra"
+                                style={styles.inputIcons}
+                              />
+                            }
+                          />
+                        </Block>
+
+                        <Block flex={1.05} right >
+
+                          <Input
+                            style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                            placeholder="Apellido"
+                            iconContent={
+                              <Icon
+                                size={16}
+                                color={argonTheme.COLORS.ICON}
+                                name="ic_mail_24px"
+                                family="ArgonExtra"
+                                style={styles.inputIcons}
+                              />
+                            }
+                          />
+                        </Block>
+                      </Block>
+                      <Block flex width={width * 0.8} style={{ marginBottom: 15 }}>
+
                         <Input
                           style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
-                          placeholder="Nombre"
+                          placeholder="Correo Electrónico"
                           iconContent={
                             <Icon
                               size={16}
@@ -67,98 +107,76 @@ class Register extends React.Component {
                             />
                           }
                         />
-                      </Block>
-
-                      <Block flex={1.05} right >
-
                         <Input
                           style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
-                          placeholder="Apellido"
+                          password
+                          borderless
+                          placeholder="Contraseña"
                           iconContent={
                             <Icon
                               size={16}
                               color={argonTheme.COLORS.ICON}
-                              name="ic_mail_24px"
+                              name="padlock-unlocked"
                               family="ArgonExtra"
                               style={styles.inputIcons}
                             />
                           }
                         />
-
+                        <Input
+                          style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                          password
+                          borderless
+                          placeholder="Repite tu Contraseña"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="padlock-unlocked"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
                       </Block>
-                    </Block>
-                    <Block flex width={width * 0.8} style={{ marginBottom: 15 }}>
+                      {/* aqui */}
 
-                    </Block>
+                      <Block row width={width * 0.5}>
+                        <Checkbox
+                          checkboxStyle={{
+                            borderWidth: 3
+                          }}
+                          color={argonTheme.COLORS.PRIMARY}
+                          label="Acepto los"
+                        />
+                        <Button
+                          style={styles.termsButton}
+                          color="transparent"
+                          textStyle={{
+                            color: argonTheme.COLORS.PRIMARY,
+                            fontSize: 14
+                          }}
+                        >
+                          Términos y condiciones
+                        </Button>
+                      </Block>
+                      <Block middle>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
 
-                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                      <Input
-                        borderless
-                        placeholder="Correo Electrónico"
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="ic_mail_24px"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8}>
-                      <Input
-                        password
-                        borderless
-                        placeholder="Contraseña"
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="padlock-unlocked"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-
-                    </Block>
-                    <Block row width={width * 0.5}>
-                      <Checkbox
-                        checkboxStyle={{
-                          borderWidth: 3
-                        }}
-                        color={argonTheme.COLORS.PRIMARY}
-                        label="Acepto los"
-                      />
-                      <Button
-                        style={styles.termsButton}
-                        color="transparent"
-                        textStyle={{
-                          color: argonTheme.COLORS.PRIMARY,
-                          fontSize: 14
-                        }}
-                      >
-                        Términos y condiciones
-                      </Button>
-                    </Block>
-                    <Block middle>
-                      <Button color="primary" style={styles.createButton}
-                        onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-
-                      >
-                        <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          CREAR UNA CUENTA
-                        </Text>
-                      </Button>
-                    </Block>
-                  </KeyboardAvoidingView>
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+                            CREAR UNA CUENTA
+                          </Text>
+                        </Button>
+                      </Block>
+                    </KeyboardAvoidingView>
+                  </Block>
                 </Block>
               </Block>
             </Block>
-          </Block>
-        </ImageBackground>
-      </Block>
+          </ImageBackground>
+        </Block>
+      </ScrollView>
     );
   }
 }
