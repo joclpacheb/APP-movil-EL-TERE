@@ -10,7 +10,7 @@ import {
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import {
-  Button, Icon, Input, Header
+  Button, Icon, Input, Header, Select,
 } from "../components";
 import { Images, argonTheme } from "../constants";
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
@@ -23,42 +23,42 @@ class Register extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.articles}>
 
-
-        <Block flex middle>
-          <StatusBar barStyle="light-content" />
-          <ImageBackground
-            source={Images.RegisterBackground}
-            style={{ width, height, zIndex: 1 }}
-          >
-            <Block >
-              <Header back title="" navigation={this.props.navigation} transparent white />
-            </Block>
-            <Block safe flex center>
-              <Block row space="evenly">
-                <Block flex left style={{ paddingLeft: 30 }}>
-                  <Text color="white" bold size={45} style={{ textAlign: 'left', marginTop: 5 }} >
-                    Únete a{"\n"}EL TERE
-                  </Text>
-                </Block>
+      <Block style={{
+        flex: 1,
+      }}>
+        <StatusBar barStyle="light-content" />
+        <ImageBackground
+          source={Images.RegisterBackground}
+          style={{ width, height, zIndex: 1 }}
+        >
+          <Block >
+            <Header back title="" navigation={this.props.navigation} transparent white bigIcon />
+          </Block>
+          <Block safe flex center>
+            <Block row space="evenly">
+              <Block flex left style={{ paddingLeft: 30 }}>
+                <Text color="white" bold size={45} style={{ textAlign: 'left', marginTop: 5 }} >
+                  Únete a{"\n"}EL TERE
+                </Text>
               </Block>
+            </Block>
 
-              <Block style={styles.registerContainer}>
-                <Block flex >
-                  <Block flex={0.25} >
+            <Block style={styles.registerContainer}>
+              <ScrollView
+                showsVerticalScrollIndicator={true}
+              >
+                <Block flex center width={width * 0.8}  >
+                  <Block flex={0.2} >
                     <Text color="#5A7E64" size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
                       ¡Queremos conocerte!</Text>
-                    <Text color="#8898AA" size={16} >
+                    <Text color="#8898AA" size={16} style={{ marginBottom: 10 }} >
                       Crea tu perfil personalizado llenando los siguientes campos:
                     </Text>
                   </Block>
 
-                  <Block flex center>
+                  <Block flex center >
                     <KeyboardAvoidingView
-                      style={{ flex: 6 }}
                       behavior="padding"
                       enabled
                     >
@@ -71,7 +71,7 @@ class Register extends React.Component {
                               <Icon
                                 size={16}
                                 color={argonTheme.COLORS.ICON}
-                                name="ic_mail_24px"
+                                name="chart-pie-35"
                                 family="ArgonExtra"
                                 style={styles.inputIcons}
                               />
@@ -88,7 +88,7 @@ class Register extends React.Component {
                               <Icon
                                 size={16}
                                 color={argonTheme.COLORS.ICON}
-                                name="ic_mail_24px"
+                                name="chart-pie-35"
                                 family="ArgonExtra"
                                 style={styles.inputIcons}
                               />
@@ -144,57 +144,98 @@ class Register extends React.Component {
                         <Input
                           style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
                           borderless
-                          placeholder="Teléfono"
+                          placeholder="Teléfono (Ej: 04265555555)"
                           iconContent={
                             <Icon
                               size={16}
                               color={argonTheme.COLORS.ICON}
-                              name="padlock-unlocked"
+                              name="chart-pie-35"
                               family="ArgonExtra"
                               style={styles.inputIcons}
                             />
                           }
                         />
+                        <Input
+                          style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                          borderless
+                          placeholder="Fecha de Nacimiento (Ej: dd/mm/aaaa)"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="chart-pie-35"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                        <Select
+                          defaultIndex={1}
+                          options={["Femenino", "Masculino"]}
+                        />
+                        <Input
+                          style={{ borderRadius: 20, elevation: 2, borderColor: argonTheme.COLORS.PRIMARY, borderWidth: 2 }}
+                          borderless
+                          placeholder="Dirección de Habitación"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="map-big"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                        <Text color="#5A7E64" size={16} bold style={{ textAlign: 'left', marginTop: 10, marginBottom: 10 }} >
+                          Intereses</Text>
+                        <Text color="#8898AA" size={16} style={{ marginBottom: 5 }} >
+                          Elige las áreas que sean de tu interés:
+                        </Text>
+
+                        <Block flex row center>
+                          <Checkbox
+                            checkboxStyle={{
+                              borderWidth: 2,
+                            }}
+                            color={argonTheme.COLORS.PRIMARY}
+                            label="Acepto los"
+                          />
+                          <Button
+                            style={styles.termsButton}
+                            color="transparent"
+                            textStyle={{
+                              color: argonTheme.COLORS.PRIMARY,
+                              fontSize: 14,
+                              fontWeight: "bold"
+                            }}
+                          >
+                            Términos y condiciones
+                          </Button>
+                        </Block>
+
+                        <Block center>
+                          <Button color="primary" style={styles.createButton}
+                            onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                          >
+                            <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+                              QUIERO UNIRME
+                            </Text>
+                          </Button>
+                        </Block>
+
                       </Block>
                       {/* aqui */}
 
-                      <Block row width={width * 0.5}>
-                        <Checkbox
-                          checkboxStyle={{
-                            borderWidth: 3
-                          }}
-                          color={argonTheme.COLORS.PRIMARY}
-                          label="Acepto los"
-                        />
-                        <Button
-                          style={styles.termsButton}
-                          color="transparent"
-                          textStyle={{
-                            color: argonTheme.COLORS.PRIMARY,
-                            fontSize: 14
-                          }}
-                        >
-                          Términos y condiciones
-                        </Button>
-                      </Block>
-                      <Block middle>
-                        <Button color="primary" style={styles.createButton}
-                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-
-                        >
-                          <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                            CREAR UNA CUENTA
-                          </Text>
-                        </Button>
-                      </Block>
                     </KeyboardAvoidingView>
                   </Block>
                 </Block>
-              </Block>
+              </ScrollView>
             </Block>
-          </ImageBackground>
-        </Block>
-      </ScrollView>
+          </Block>
+        </ImageBackground>
+      </Block>
+
     );
   }
 }
@@ -202,13 +243,13 @@ class Register extends React.Component {
 const styles = StyleSheet.create({
   registerContainer: {
     width: width * 0.9,
-    height: height * 0.6,
+    height: height * 0.68,
     marginTop: height * 0.02,
     backgroundColor: "#F4F5F7",
     borderRadius: 20,
     shadowColor: argonTheme.COLORS.BLACK,
-    paddingLeft: 25,
-    paddingRight: 25,
+    paddingLeft: 10,
+    paddingRight: 10,
     shadowOffset: {
       width: 0,
       height: 4
@@ -216,7 +257,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.1,
     elevation: 1,
-    overflow: "hidden"
   },
   socialConnect: {
     backgroundColor: argonTheme.COLORS.WHITE,
@@ -249,16 +289,17 @@ const styles = StyleSheet.create({
   passwordCheck: {
     paddingLeft: 15,
     paddingTop: 13,
-    paddingBottom: 30
+    paddingBottom: 20
   },
   createButton: {
     width: width * 0.5,
     borderRadius: 20,
-    marginTop: 25
+    marginTop: 5,
+    marginBottom: width * 0.1,
   },
   termsButton: {
     width: width * 0.4,
-    elevation: 0
+    elevation: 0,
   }
 });
 

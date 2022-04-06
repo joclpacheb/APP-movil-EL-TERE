@@ -166,7 +166,7 @@ class Header extends React.Component {
     }
   }
   render() {
-    const { back, title, white, transparent, bgColor, iconColor, titleColor, navigation, ...props } = this.props;
+    const { back, title, white, transparent, bgColor, iconColor, iconSize, bigIcon, titleColor, navigation, ...props } = this.props;
 
     const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
     const headerStyles = [
@@ -191,11 +191,10 @@ class Header extends React.Component {
           left={
             <Icon
               name={back ? 'chevron-left' : "menu"} family="entypo"
-              size={50} onPress={this.handleLeftPress}
+              size={iconSize || (bigIcon ? 50 : 30)} onPress={this.handleLeftPress}
               color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
               style={{ marginTop: 0 }}
             />
-
           }
           leftStyle={{ paddingVertical: 12, flex: 0.5 }}
           titleStyle={[

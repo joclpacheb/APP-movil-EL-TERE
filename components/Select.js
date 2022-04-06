@@ -9,7 +9,7 @@ import { argonTheme } from '../constants';
 
 class DropDown extends React.Component {
   state = {
-    value: 1,
+    value: 'Seleccione una opción',
   }
 
   handleOnSelect = (index, value) => {
@@ -20,7 +20,7 @@ class DropDown extends React.Component {
   }
 
   render() {
-    const { onSelect, iconName, iconFamily, iconSize, iconColor, color, textStyle, style, ...props } = this.props;
+    const { onSelect, iconName, iconNameLeft, iconFamily, iconSize, iconColor, color, textStyle, style, ...props } = this.props;
 
     const modalStyles = [
       styles.qty,
@@ -38,11 +38,12 @@ class DropDown extends React.Component {
         style={modalStyles}
         onSelect={this.handleOnSelect}
         dropdownStyle={styles.dropdown}
-        dropdownTextStyle={{paddingLeft:16, fontSize:12}}
+        dropdownTextStyle={{ paddingLeft: 20, fontSize: 16 }}
         {...props}>
         <Block flex row middle space="between">
-          <Text size={12} style={textStyles}>{this.state.value}</Text>
-          <Icon name={iconName || "nav-down"} family={iconFamily || "ArgonExtra"} size={iconSize || 10} color={iconColor || argonTheme.COLORS.WHITE} />
+          <Icon name={iconNameLeft || "diamond"} family={iconFamily || "ArgonExtra"} size={iconSize || 16} color={argonTheme.COLORS.ICON} />
+          <Text size={14} style={textStyles}>{this.state.value}</Text>
+          <Icon name={iconName || "nav-down"} family={iconFamily || "ArgonExtra"} size={iconSize || 10} color={iconColor || argonTheme.COLORS.PRIMARY} />
         </Block>
       </ModalDropdown>
     )
@@ -60,25 +61,32 @@ DropDown.propTypes = {
 
 const styles = StyleSheet.create({
   qty: {
-    width: 100,
-    backgroundColor: argonTheme.COLORS.DEFAULT,
+    marginVertical: 8,
+    backgroundColor: argonTheme.COLORS.WHITE,
     paddingHorizontal: 16,
     paddingTop: 10,
-    paddingBottom:9.5,
-    borderRadius: 4,
-    shadowColor: "rgba(0, 0, 0, 0.1)",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    shadowOpacity: 1,
+    paddingBottom: 10,
+    borderRadius: 20,
+    borderColor: argonTheme.COLORS.PRIMARY,
+    borderWidth: 2,
+    shadowColor: argonTheme.COLORS.BLACK,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
+    shadowOpacity: 0.05,
   },
   text: {
-    color: argonTheme.COLORS.WHITE,
-    fontWeight: '600'
+    color: argonTheme.COLORS.MUTED,
+    fontWeight: '600',
+    textAlign: 'left',
+    flex: 1,
+    paddingLeft: 10
+
   },
   dropdown: {
     marginTop: 8,
     marginLeft: -16,
-    width: 100,
+    width: 300,
+    borderWidth: 1,
   },
 });
 

@@ -65,7 +65,7 @@ class Elements extends React.Component {
             <Block flex left style={{ marginTop: 8 }}>
               <Select
                 defaultIndex={1}
-                options={["01", "02", "03", "04", "05"]}
+                options={["Femenino", "Masculino"]}
               />
             </Block>
             <Block flex center>
@@ -79,6 +79,10 @@ class Elements extends React.Component {
               </Button>
             </Block>
           </Block>
+          <Select
+            defaultIndex={1}
+            options={["Femenino", "Masculino"]}
+          />
         </Block>
       </Block>
     );
