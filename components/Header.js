@@ -1,12 +1,12 @@
 import React from 'react';
 import { withNavigation } from '@react-navigation/compat';
-import { TouchableOpacity, StyleSheet, Platform, Dimensions } from 'react-native';
+import { TouchableOpacity, StyleSheet, Image, Platform, Dimensions } from 'react-native';
 import { Button, Block, NavBar, Text, theme } from 'galio-framework';
 
 import Icon from './Icon';
 import Input from './Input';
 import Tabs from './Tabs';
-import argonTheme from '../constants/Theme';
+import { Images, argonTheme } from '../constants/';
 
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
@@ -112,9 +112,9 @@ class Header extends React.Component {
         right
         color="black"
         style={styles.search}
-        placeholder="Escribe aquí lo que estás buscando..."
-        placeholderTextColor={'#8898AA'}
-        onFocus={() => navigation.navigate('Pro')}
+        placeholder="Buscar..."
+        placeholderTextColor={theme.COLORS.ICON}
+        // onFocus={() => navigation.navigate('Pro')}
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
       />
     );
@@ -166,7 +166,7 @@ class Header extends React.Component {
     }
   }
   render() {
-    const { back, title, white, transparent, bgColor, iconColor, iconSize, bigIcon, titleColor, navigation, ...props } = this.props;
+    const { back, title, subtitle, white, transparent, bgColor, withLogo, iconColor, iconSize, bigIcon, titleColor, navigation, ...props } = this.props;
 
     const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
     const headerStyles = [
@@ -184,22 +184,32 @@ class Header extends React.Component {
         <NavBar
           back={false}
           title={title}
+          subtitle={subtitle}
           style={navbarStyles}
           transparent={transparent}
           right={this.renderRight()}
           rightStyle={{ alignItems: 'center' }}
+          // AQUI SE EDITA EL HEADER
           left={
-            <Icon
-              name={back ? 'chevron-left' : "menu"} family="entypo"
-              size={iconSize || (bigIcon ? 50 : 30)} onPress={this.handleLeftPress}
-              color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
-              style={{ marginTop: 0 }}
-            />
+            <>
+              <Block row>
+                <Icon
+                  name={back ? 'chevron-left' : "menu"} family="entypo"
+                  size={iconSize || (bigIcon ? 50 : 30)} onPress={this.handleLeftPress}
+                  color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
+                  style={{ marginTop: 0 }} />
+                <Block>
+                  <Image source={(withLogo ? Images.logoNormal : Images.Blank)}
+                    style={{ height: 40, width: 40, marginLeft: 6, marginBottom: theme.SIZES.BASE * 0.5 }} />
+                </Block>
+              </Block></>
           }
-          leftStyle={{ paddingVertical: 12, flex: 0.5 }}
+          leftStyle={{ marginTop: 5, flex: 1 }}
           titleStyle={[
             styles.title,
-            { color: argonTheme.COLORS[white ? 'WHITE' : 'HEADER'] },
+            {
+              color: argonTheme.COLORS.VERDE,
+            },
             titleColor && { color: titleColor }
           ]}
           {...props}
@@ -219,6 +229,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 16,
     fontWeight: 'bold',
+    color: argonTheme.COLORS.HEADER
   },
   navbar: {
     paddingVertical: 0,
@@ -251,12 +262,13 @@ const styles = StyleSheet.create({
     borderRightColor: theme.COLORS.ICON,
   },
   search: {
-    height: 48,
-    width: width - 32,
+    height: 45,
+    width: width - 42,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderRadius: 3,
-    borderColor: argonTheme.COLORS.BORDER
+    borderRadius: 20,
+
+    borderColor: argonTheme.COLORS.PRIMARY
   },
   options: {
     marginBottom: 10,
@@ -265,16 +277,16 @@ const styles = StyleSheet.create({
   },
   tab: {
     backgroundColor: theme.COLORS.TRANSPARENT,
-    width: width * 0.35,
-    borderRadius: 0,
+    width: width * 0.4,
+    borderRadius: 20,
     borderWidth: 0,
-    height: 10,
-    elevation: 0,
+    height: 8,
+    elevation: 1,
   },
   tabTitle: {
     lineHeight: 19,
     fontWeight: '400',
-    color: argonTheme.COLORS.HEADER
+    color: argonTheme.COLORS.VERDE
   },
 });
 

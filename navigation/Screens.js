@@ -166,9 +166,11 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Home"
+              title="¡Bienvenido a EL TERE!"
+              subtitle="Tu mejor aliado para hacer mercado"
               search
-              options
+              withLogo
+              tabs={tabs.categories}
               navigation={navigation}
               scene={scene}
             />

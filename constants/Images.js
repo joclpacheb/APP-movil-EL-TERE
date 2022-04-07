@@ -6,6 +6,7 @@ const ProfileBackground = require("../assets/imgs/profile-screen-bg.png");
 const RegisterBackground = require("../assets/imgs/register-bg.png");
 const Pro = require("../assets/imgs/getPro-bg.png");
 const ArgonLogo = require("../assets/imgs/argonlogo.png");
+const Blank = require("../assets/imgs/blank.png");
 const iOSLogo = require("../assets/imgs/ios.png");
 const androidLogo = require("../assets/imgs/android.png");
 const logoBlanco = require("../assets/imgs/LOGO-blanco-EL-TERE.png");
@@ -39,6 +40,7 @@ export default {
   Products,
   Pro,
   ArgonLogo,
+  Blank,
   iOSLogo,
   androidLogo,
   logoBlanco,

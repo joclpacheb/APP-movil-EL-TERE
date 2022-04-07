@@ -7,15 +7,12 @@ import {
   KeyboardAvoidingView,
   ScrollView
 } from "react-native";
-import { Block, Checkbox, Text, theme } from "galio-framework";
+import { Block, Checkbox, Text } from "galio-framework";
 
 import {
   Button, Icon, Input, Header, Select,
 } from "../components";
 import { Images, argonTheme } from "../constants";
-import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { HeaderHeight } from "../constants/utils";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -50,7 +47,7 @@ class Register extends React.Component {
               >
                 <Block flex center width={width * 0.8}  >
                   <Block flex={0.2} >
-                    <Text color="#5A7E64" size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
+                    <Text color={argonTheme.COLORS.VERDECLARO} size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
                       ¡Queremos conocerte!</Text>
                     <Text color="#8898AA" size={16} style={{ marginBottom: 10 }} >
                       Crea tu perfil personalizado llenando los siguientes campos:
@@ -71,8 +68,8 @@ class Register extends React.Component {
                               <Icon
                                 size={16}
                                 color={argonTheme.COLORS.ICON}
-                                name="chart-pie-35"
-                                family="ArgonExtra"
+                                name="user"
+                                family="antdesign"
                                 style={styles.inputIcons}
                               />
                             }
@@ -88,8 +85,8 @@ class Register extends React.Component {
                               <Icon
                                 size={16}
                                 color={argonTheme.COLORS.ICON}
-                                name="chart-pie-35"
-                                family="ArgonExtra"
+                                name="user"
+                                family="antdesign"
                                 style={styles.inputIcons}
                               />
                             }
@@ -149,8 +146,8 @@ class Register extends React.Component {
                             <Icon
                               size={16}
                               color={argonTheme.COLORS.ICON}
-                              name="chart-pie-35"
-                              family="ArgonExtra"
+                              name="phone"
+                              family="antdesign"
                               style={styles.inputIcons}
                             />
                           }
@@ -163,14 +160,15 @@ class Register extends React.Component {
                             <Icon
                               size={16}
                               color={argonTheme.COLORS.ICON}
-                              name="chart-pie-35"
-                              family="ArgonExtra"
+                              name="calendar"
+                              family="antdesign"
                               style={styles.inputIcons}
                             />
                           }
                         />
                         <Select
                           defaultIndex={1}
+                          title="Género"
                           options={["Femenino", "Masculino"]}
                         />
                         <Input
@@ -181,8 +179,8 @@ class Register extends React.Component {
                             <Icon
                               size={16}
                               color={argonTheme.COLORS.ICON}
-                              name="map-big"
-                              family="ArgonExtra"
+                              name="enviromento"
+                              family="antdesign"
                               style={styles.inputIcons}
                             />
                           }

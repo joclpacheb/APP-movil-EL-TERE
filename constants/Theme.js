@@ -26,6 +26,8 @@ export default {
     ICON: '#172B4D',
     HEADER: '#525F7F',
     BORDER: '#CAD1D7',
+    VERDE: '#41634A',
+    VERDECLARO: '#5A7E64',
     WHITE: '#FFFFFF',
     BLACK: '#000000'
   }

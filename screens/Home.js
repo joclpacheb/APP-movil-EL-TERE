@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, Text, ScrollView } from 'react-native';
 import { Block, theme } from 'galio-framework';
 
 import { Card } from '../components';
 import articles from '../constants/articles';
 const { width } = Dimensions.get('screen');
+import { argonTheme } from "../constants";
 
 const thumbMeasure = (width - 48 - 32) / 3;
 const cardWidth = width - theme.SIZES.BASE * 2;
@@ -33,28 +34,51 @@ class Home extends React.Component {
 
   renderArticles = () => {
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.articles}>
-        <Block flex>
-
-          <Card item={articles[0]} horizontal />
-          <Block flex row>
-            <Card item={articles[1]} style={{ marginRight: theme.SIZES.BASE }} />
-            <Card item={articles[2]} />
+      <>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.articles}>
+          <Block left>
+            <Text color="#8898AA" size={16} bold style={{ textAlign: 'left', marginTop: 1, marginBottom: 10 }}>
+              Promociones y Eventos:</Text>
           </Block>
-          <Card item={articles[3]} horizontal />
-          <Card item={articles[4]} full />
-        </Block>
 
+          <ScrollView horizontal style={{ paddingHorizontal: 0 }}>
 
-      </ScrollView>
+            <Block row flex>
+              <Card item={articles[5]} style={{ marginRight: 20 }} vertical />
+              <Card item={articles[6]} style={{ marginRight: 20 }} vertical />
+              <Card item={articles[5]} style={{ marginRight: 20 }} vertical />
+              <Card item={articles[6]} style={{ marginRight: 20 }} vertical />
+            </Block>
+          </ScrollView>
+
+          <Text color="#8898AA" size={16} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }}>
+            Comercios:</Text>
+          <Block grid flex center >
+
+            <Block row flex  >
+              <Card item={articles[3]} style={{ marginRight: 20 }} />
+              <Card item={articles[2]} style={{}} />
+            </Block>
+            <Block row flex >
+              <Card item={articles[1]} style={{ marginRight: 20 }} />
+              <Card item={articles[3]} style={{}} />
+            </Block>
+            <Block row flex >
+              <Card item={articles[2]} style={{ marginRight: 20 }} />
+              <Card item={articles[1]} style={{}} />
+            </Block>
+          </Block>
+
+        </ScrollView></>
     )
   }
 
   render() {
     return (
       <Block flex center style={styles.home}>
+
         {this.renderArticles()}
       </Block>
 

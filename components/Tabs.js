@@ -4,6 +4,7 @@ import { Block, theme } from 'galio-framework';
 
 const { width } = Dimensions.get('screen');
 import argonTheme from '../constants/Theme';
+import { borderColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const defaultMenu = [
   { id: 'popular', title: 'Popular', },
@@ -68,7 +69,7 @@ export default class Tabs extends React.Component {
       outputRange: [argonTheme.COLORS.BLACK, isActive ? argonTheme.COLORS.WHITE : argonTheme.COLORS.BLACK],
       extrapolate: 'clamp',
     });
-    
+
     const containerStyles = [
       styles.titleContainer,
       !isActive && { backgroundColor: argonTheme.COLORS.SECONDARY },
@@ -131,15 +132,17 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   menu: {
-    paddingHorizontal: theme.SIZES.BASE * 2.5,
+    paddingHorizontal: theme.SIZES.BASE * 1.5,
     paddingTop: 8,
     paddingBottom: 16,
   },
   titleContainer: {
     alignItems: 'center',
-    backgroundColor: argonTheme.COLORS.ACTIVE,
-    borderRadius: 4,
-    marginRight: 9
+    backgroundColor: argonTheme.COLORS.VERDE,
+    borderRadius: 20,
+    marginRight: 9,
+    borderColor: argonTheme.COLORS.PRIMARY,
+    borderWidth: 1,
   },
   containerShadow: {
     shadowColor: 'black',

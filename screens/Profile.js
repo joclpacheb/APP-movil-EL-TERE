@@ -7,7 +7,7 @@ import {
   Image,
   ScrollView
 } from "react-native";
-import { Block, Card, Text, theme } from "galio-framework";
+import { Block, Card, Text, theme, GaButton } from "galio-framework";
 
 import {
   Button, Icon, Input, Header,
@@ -40,10 +40,16 @@ class Profile extends React.Component {
                 <Image source={Images.logoNormal} //logo principal arriba
                   style={styles.avatar} />
               </Block>
+              <Block right style={{ marginTop: -60, marginRight: 10 }}>
+                <Block>
+                  <Button onlyIcon icon="tool" iconFamily="antdesign" iconSize={30} color="warning" iconColor="#fff" style={{ width: 50, height: 50 }} onPress={() => navigation.navigate("Account")}></Button>
+                </Block>
+              </Block>
 
               <ScrollView
                 showsVerticalScrollIndicator={true}
               >
+
                 <Block flex center width={width * 0.8}  >
                   <Block flex={0.2} >
                     <Text color="#5A7E64" size={20} bold style={{ textAlign: 'center', marginTop: 20, marginBottom: 10 }} >
@@ -56,6 +62,7 @@ class Profile extends React.Component {
                     </Text>
 
                   </Block>
+
                   <Block row flex >
                     <Block center>
                       <Text color="#5A7E64" size={50} bold style={{ marginTop: 5 }} >
@@ -86,34 +93,88 @@ class Profile extends React.Component {
                       </Block>
 
                       <Block center>
-                        <Button color="primary" style={styles.createButton}
-                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-                        >
-                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
-                            VER TODOS
-                          </Text>
+
+
+                        <Button color="primary" style={styles.createPedido}>
+                          <Block row flex middle center>
+                            <Icon
+                              family="antdesign"
+                              size={50}
+                              name="shoppingcart"
+                              color={argonTheme.COLORS.PRIMARY}
+                              style={{ marginRight: 20 }}
+                            />
+                            <Block>
+                              <Text size={20} bold color={argonTheme.COLORS.VERDE}>
+                                Pedido 1
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                N° de artículos: 5
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Fecha: 02/04/2022
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Total: 20$
+                              </Text>
+                            </Block>
+                          </Block>
                         </Button>
-                        <Button color="primary" style={styles.createButton}
-                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-                        >
-                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
-                            VER TODOS
-                          </Text>
+
+
+                        <Button color="primary" style={styles.createPedido}>
+                          <Block row flex middle center>
+                            <Icon
+                              family="antdesign"
+                              size={50}
+                              name="shoppingcart"
+                              color={argonTheme.COLORS.PRIMARY}
+                              style={{ marginRight: 20 }}
+                            />
+                            <Block>
+                              <Text size={20} bold color={argonTheme.COLORS.VERDE}>
+                                Pedido 2
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                N° de artículos: 5
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Fecha: 02/04/2022
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Total: 20$
+                              </Text>
+                            </Block>
+                          </Block>
                         </Button>
-                        <Button color="primary" style={styles.createButton}
-                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-                        >
-                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
-                            VER TODOS
-                          </Text>
+
+
+                        <Button color="primary" style={styles.createPedido}>
+                          <Block row flex middle center>
+                            <Icon
+                              family="antdesign"
+                              size={50}
+                              name="shoppingcart"
+                              color={argonTheme.COLORS.PRIMARY}
+                              style={{ marginRight: 20 }}
+                            />
+                            <Block>
+                              <Text size={20} bold color={argonTheme.COLORS.VERDE}>
+                                Pedido 3
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                N° de artículos: 5
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Fecha: 02/04/2022
+                              </Text>
+                              <Text size={16} color={argonTheme.COLORS.HEADER}>
+                                Total: 20$
+                              </Text>
+                            </Block>
+                          </Block>
                         </Button>
-                        <Button color="primary" style={styles.createButton}
-                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
-                        >
-                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
-                            VER TODOS
-                          </Text>
-                        </Button>
+
                         <Button color="primary" style={styles.createButton}
                           onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
                         >
@@ -158,6 +219,19 @@ const styles = StyleSheet.create({
     zIndex: 1
 
   },
+  social: {
+    width: theme.SIZES.BASE * 3.5,
+    height: theme.SIZES.BASE * 3.5,
+    borderRadius: theme.SIZES.BASE * 1.75,
+    justifyContent: "center"
+  },
+  shadow: {
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    shadowOpacity: 0.2,
+    elevation: 2
+  },
 
 
   createButton: {
@@ -168,6 +242,17 @@ const styles = StyleSheet.create({
     backgroundColor: argonTheme.COLORS.WHITE,
     marginTop: 5,
     marginBottom: width * 0.1,
+  },
+
+  createPedido: {
+    width: width * 0.7,
+    height: height * 0.14,
+    borderRadius: 20,
+    borderColor: argonTheme.COLORS.PRIMARY,
+    borderWidth: 1,
+    backgroundColor: argonTheme.COLORS.WHITE,
+    marginTop: 2,
+    marginBottom: width * 0.05,
   },
   profileCard: {
     position: "relative",
