@@ -13,6 +13,7 @@ enableScreens();
 
 import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
+import { AuthProvider } from "./context/AuthContext";
 
 // cache app images
 const assetImages = [
@@ -69,13 +70,15 @@ export default (props) => {
   } else if (fontsLoaded) {
     return (
       <RootSiblingParent>
-        <NavigationContainer>
-          <GalioProvider theme={argonTheme}>
-            <Block flex>
-              <Screens />
-            </Block>
-          </GalioProvider>
-        </NavigationContainer>
+        <AuthProvider>
+          <NavigationContainer>
+            <GalioProvider theme={argonTheme}>
+              <Block flex>
+                <Screens />
+              </Block>
+            </GalioProvider>
+          </NavigationContainer>
+        </AuthProvider>
       </RootSiblingParent>
     );
   } else {

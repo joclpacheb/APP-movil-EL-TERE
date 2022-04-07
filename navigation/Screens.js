@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Easing, Animated, Dimensions } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Block } from "galio-framework";
+import { Block, Button, Text } from "galio-framework";
 
 // screens
 import Home from "../screens/Home";
@@ -24,6 +24,8 @@ import CustomDrawerContent from "./Menu";
 // header for screens
 import { Icon, Header } from "../components";
 import { argonTheme, tabs } from "../constants";
+import { AuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../hooks/global";
 
 const { width } = Dimensions.get("screen");
 
@@ -41,7 +43,7 @@ function ElementsStack(props) {
           header: ({ navigation, scene }) => (
             <Header title="Elements" navigation={navigation} scene={scene} />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
       <Stack.Screen
@@ -58,7 +60,7 @@ function ElementsStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
       <Stack.Screen
@@ -75,7 +77,7 @@ function ElementsStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -92,7 +94,7 @@ function ArticlesStack(props) {
           header: ({ navigation, scene }) => (
             <Header title="Articles" navigation={navigation} scene={scene} />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
       <Stack.Screen
@@ -109,7 +111,7 @@ function ArticlesStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -133,7 +135,7 @@ function ProfileStack(props) {
             />
           ),
           cardStyle: { backgroundColor: "#FFFFFF" },
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
       <Stack.Screen
@@ -150,7 +152,7 @@ function ProfileStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -175,7 +177,7 @@ function HomeStack(props) {
               scene={scene}
             />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
       <Stack.Screen
@@ -192,40 +194,70 @@ function HomeStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
-
     </Stack.Navigator>
   );
 }
 
 export default function OnboardingStack(props) {
+  const {
+    state: { isAuthenticated },
+  } = useAuthContext();
+
   return (
     <Stack.Navigator mode="card" headerMode="none">
-      <Stack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        option={{
-          headerTransparent: true
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Account" component={Register} />
-      <Stack.Screen name="PasswordRecovery" component={PasswordRecovery} />
+      {!isAuthenticated ? (
+        <>
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            option={{
+              headerTransparent: true,
+            }}
+          />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Account" component={Register} />
+          <Stack.Screen name="PasswordRecovery" component={PasswordRecovery} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="App" component={AppStack} />
+        </>
+      )}
     </Stack.Navigator>
   );
 }
 
 function AppStack(props) {
+  const { state, dispatch } = useAuthContext();
+
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
-      drawerContent={props => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => (
+        <>
+          <CustomDrawerContent {...props} />
+          <Button
+            style={{
+              marginBottom: 5,
+              alignSelf: "center",
+              width: "80%",
+            }}
+            onPress={() =>
+              dispatch({
+                type: "LOGOUT",
+              })
+            }
+          >
+            Cerrar sesión
+          </Button>
+        </>
+      )}
       drawerStyle={{
         backgroundColor: "white",
-        width: width * 0.8
+        width: width * 0.8,
       }}
       drawerContentOptions={{
         activeTintcolor: "white",
@@ -239,13 +271,13 @@ function AppStack(props) {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          overflow: "hidden"
+          overflow: "hidden",
         },
         labelStyle: {
           fontSize: 18,
           marginLeft: 12,
-          fontWeight: "normal"
-        }
+          fontWeight: "normal",
+        },
       }}
       initialRouteName="Home"
     >
@@ -258,4 +290,3 @@ function AppStack(props) {
     </Drawer.Navigator>
   );
 }
-

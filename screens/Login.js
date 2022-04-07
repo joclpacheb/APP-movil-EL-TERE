@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   StyleSheet,
   ImageBackground,
@@ -12,7 +14,7 @@ import { Block, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
-import { useToast } from "../hooks/global";
+import { useAuthContext, useToast } from "../hooks/global";
 import { authAPI } from "../apis/authAPI";
 
 const { width, height } = Dimensions.get("screen");
@@ -20,6 +22,7 @@ const { width, height } = Dimensions.get("screen");
 const Login = ({ navigation }) => {
   // hooks
   const { showErrorToast } = useToast();
+  const { dispatch } = useAuthContext();
 
   const [form, setForm] = useState({
     email: "",
@@ -39,6 +42,19 @@ const Login = ({ navigation }) => {
       // showSuccesToast("Login Successful");
       // const { data } = await authAPI.login(form)
       // navigation.navigate("App");
+
+      // TODO: delete after connect to backend
+      await AsyncStorage.setItem(
+        "@accessToken",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODk5MDgwZDYyNzU3MDAxNjQxODI1YyIsImlkTnVtYmVyIjoyNTE0NzI4NCwiaWRCdXNpbmVzcyI6IjYxODk5MDgwZDYyNzU3MDAxNjQxODI1ZSIsInR5cGVVc2UiOiJCIiwicHJpbWFyeUN1cnJlbmN5IjoiQnMiLCJwbGFuIjoiQiIsImlhdCI6MTY0OTM2NzQwMSwiZXhwIjoxNjQ5NTQwMjAxfQ.Cm_4AwmMaebNOFwXkosXd6_cCnF-PP8c-J3WbkOHx4k"
+      );
+
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user: form,
+        },
+      });
     } catch (error) {
       showErrorToast("Error");
     }

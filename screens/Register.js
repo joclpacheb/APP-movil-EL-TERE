@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   StyleSheet,
   ImageBackground,
@@ -12,13 +14,14 @@ import { Block, Checkbox, Text } from "galio-framework";
 import { Button, Icon, Input, Header, Select } from "../components";
 import { Images, argonTheme } from "../constants";
 import { authAPI } from "../apis/authAPI";
-import { useToast } from "../hooks/global";
+import { useAuthContext, useToast } from "../hooks/global";
 
 const { width, height } = Dimensions.get("screen");
 
 const Register = ({ navigation }) => {
   //hooks
   const { showErrorToast, showSuccesToast } = useToast();
+  const { dispatch } = useAuthContext();
 
   //form
   const [formData, setFormData] = useState({
@@ -38,7 +41,19 @@ const Register = ({ navigation }) => {
       // const data = await authAPI.register(form)
       // send petition
       showSuccesToast("Usuario registrado correctamente");
-      navigation.navigate("App");
+
+      // TODO: delete after connect to backend
+      await AsyncStorage.setItem(
+        "@accessToken",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODk5MDgwZDYyNzU3MDAxNjQxODI1YyIsImlkTnVtYmVyIjoyNTE0NzI4NCwiaWRCdXNpbmVzcyI6IjYxODk5MDgwZDYyNzU3MDAxNjQxODI1ZSIsInR5cGVVc2UiOiJCIiwicHJpbWFyeUN1cnJlbmN5IjoiQnMiLCJwbGFuIjoiQiIsImlhdCI6MTY0OTM2NzQwMSwiZXhwIjoxNjQ5NTQwMjAxfQ.Cm_4AwmMaebNOFwXkosXd6_cCnF-PP8c-J3WbkOHx4k"
+      );
+
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user: formData,
+        },
+      });
     } catch (error) {
       console.log(error);
       // TODO: show error
