@@ -18,7 +18,7 @@ import { HeaderHeight } from "../constants/utils";
 
 const { width, height } = Dimensions.get("screen");
 
-class Register extends React.Component {
+class PasswordRecovery extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
@@ -166,5 +166,4 @@ const styles = StyleSheet.create({
         elevation: 0,
     }
 });
-
-export default Register;
+export default PasswordRecovery;

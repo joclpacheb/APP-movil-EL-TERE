@@ -1,271 +1,218 @@
 import React from "react";
 import {
   StyleSheet,
-  Dimensions,
-  ScrollView,
-  Image,
   ImageBackground,
-  Platform
+  Dimensions,
+  StatusBar,
+  Image,
+  ScrollView
 } from "react-native";
-import { Block, Text, theme } from "galio-framework";
+import { Block, Card, Text, theme } from "galio-framework";
 
-import { Button } from "../components";
+import {
+  Button, Icon, Input, Header,
+} from "../components";
 import { Images, argonTheme } from "../constants";
-import { HeaderHeight } from "../constants/utils";
+
 
 const { width, height } = Dimensions.get("screen");
 
-const thumbMeasure = (width - 48 - 32) / 3;
-
 class Profile extends React.Component {
+
   render() {
+    const { navigation } = this.props;
     return (
-      <Block flex style={styles.profile}>
-        <Block flex>
-          <ImageBackground
-            source={Images.ProfileBackground}
-            style={styles.profileContainer}
-            imageStyle={styles.profileBackground}
-          >
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              style={{ width, marginTop: '25%' }}
-            >
-              <Block flex style={styles.profileCard}>
-                <Block middle style={styles.avatarContainer}>
-                  <Image source={Images.logoNormal} //logo principal arriba
-                    style={styles.avatar} />
-                </Block>
 
-                <Block flex>
-                  <Block middle style={styles.nameInfo}>
-                    <Text bold size={28} color="#32325D">
-                      Nombre Apellido
-                    </Text>
-                    <Text size={16} color="#32325D" style={{ marginTop: 10 }}>
-                      Barquisimeto, Venezuela
-                    </Text>
-                  </Block>
-                  <Block middle style={{ marginTop: 30, marginBottom: 16 }}>
-                    <Block style={styles.divider} />
-                  </Block>
-                  <Block middle>
+      <Block style={{
+        flex: 1,
+      }}>
+        <StatusBar barStyle="light-content" />
+        <ImageBackground
+          source={Images.RegisterBackground}
+          style={{ width, height, zIndex: 1 }}
+        >
+          <Block >
+            <Header back title="" navigation={this.props.navigation} transparent white bigIcon />
+          </Block>
+          <Block safe flex center>
+            <Block style={styles.registerContainer}>
+              <Block middle style={styles.avatarContainer}>
+                <Image source={Images.logoNormal} //logo principal arriba
+                  style={styles.avatar} />
+              </Block>
 
+              <ScrollView
+                showsVerticalScrollIndicator={true}
+              >
+                <Block flex center width={width * 0.8}  >
+                  <Block flex={0.2} >
+                    <Text color="#5A7E64" size={20} bold style={{ textAlign: 'center', marginTop: 20, marginBottom: 10 }} >
+                      Nombre Apellido</Text>
+                    <Text color="#8898AA" size={16} style={{
+                      marginBottom: 10, textAlign: 'center'
+                    }} >
+                      Carrera 27, Calle 34.
+                      {"\n"}Barquisimeto.
+                    </Text>
 
                   </Block>
-                  <Block
-                    row
-                    space="between"
-                  >
-                    <Text bold size={16} color="#525F7F" style={{ marginTop: 12 }}>
-                      Pedidos:
-                    </Text>
-                    <Button
-                      small
-                      color="transparent"
-                      textStyle={{ color: "#5E72E4", fontSize: 12, marginLeft: 24 }}
-                    >
-                      View all
-                    </Button>
-                  </Block>
-                  <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
-                    <Block row space="between" style={{ flexWrap: "wrap" }}>
-                      {Images.Viewed.map((img, imgIndex) => (
-                        <Image
-                          source={{ uri: img }}
-                          key={`viewed-${img}`}
-                          resizeMode="cover"
-                          style={styles.thumb}
-                        />
-                      ))}
+                  <Block row flex >
+                    <Block center>
+                      <Text color="#5A7E64" size={50} bold style={{ marginTop: 5 }} >
+                        2 </Text>
+                      <Text color="#8898AA" size={16} style={{
+                        marginBottom: 10,
+                      }}>Pedidos
+                      </Text>
+                    </Block>
+                    <Block style={styles.verticaldivider} />
+                    <Block center>
+                      <Text color="#5A7E64" size={50} bold style={{ marginTop: 5 }} >
+                        30 </Text>
+                      <Text color="#8898AA" size={16} style={{
+                        marginBottom: 10,
+                      }}>Comentarios
+                      </Text>
                     </Block>
                   </Block>
-                </Block>
-              </Block>
-            </ScrollView>
-          </ImageBackground>
-        </Block>
-        {/* <ScrollView showsVerticalScrollIndicator={false} 
-                    contentContainerStyle={{ flex: 1, width, height, zIndex: 9000, backgroundColor: 'red' }}>
-        <Block flex style={styles.profileCard}>
-          <Block middle style={styles.avatarContainer}>
-            <Image
-              source={{ uri: Images.ProfilePicture }}
-              style={styles.avatar}
-            />
-          </Block>
-          <Block style={styles.info}>
-            <Block
-              middle
-              row
-              space="evenly"
-              style={{ marginTop: 20, paddingBottom: 24 }}
-            >
-              <Button small style={{ backgroundColor: argonTheme.COLORS.INFO }}>
-                CONNECT
-              </Button>
-              <Button
-                small
-                style={{ backgroundColor: argonTheme.COLORS.DEFAULT }}
-              >
-                MESSAGE
-              </Button>
-            </Block>
 
-            <Block row space="between">
-              <Block middle>
-                <Text
-                  bold
-                  size={12}
-                  color="#525F7F"
-                  style={{ marginBottom: 4 }}
-                >
-                  2K
-                </Text>
-                <Text size={12}>Orders</Text>
-              </Block>
-              <Block middle>
-                <Text bold size={12} style={{ marginBottom: 4 }}>
-                  10
-                </Text>
-                <Text size={12}>Photos</Text>
-              </Block>
-              <Block middle>
-                <Text bold size={12} style={{ marginBottom: 4 }}>
-                  89
-                </Text>
-                <Text size={12}>Comments</Text>
-              </Block>
-            </Block>
-          </Block>
-          <Block flex>
-              <Block middle style={styles.nameInfo}>
-                <Text bold size={28} color="#32325D">
-                  Jessica Jones, 27
-                </Text>
-                <Text size={16} color="#32325D" style={{ marginTop: 10 }}>
-                  San Francisco, USA
-                </Text>
-              </Block>
-              <Block middle style={{ marginTop: 30, marginBottom: 16 }}>
-                <Block style={styles.divider} />
-              </Block>
-              <Block middle>
-                <Text size={16} color="#525F7F" style={{ textAlign: "center" }}>
-                  An artist of considerable range, Jessica name taken by
-                  Melbourne …
-                </Text>
-                <Button
-                  color="transparent"
-                  textStyle={{
-                    color: "#233DD2",
-                    fontWeight: "500",
-                    fontSize: 16
-                  }}
-                >
-                  Show more
-                </Button>
-              </Block>
-              <Block
-                row
-                style={{ paddingVertical: 14, alignItems: "baseline" }}
-              >
-                <Text bold size={16} color="#525F7F">
-                  Album
-                </Text>
-              </Block>
-              <Block
-                row
-                style={{ paddingBottom: 20, justifyContent: "flex-end" }}
-              >
-                <Button
-                  small
-                  color="transparent"
-                  textStyle={{ color: "#5E72E4", fontSize: 12 }}
-                >
-                  View all
-                </Button>
-              </Block>
-              <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
-                <Block row space="between" style={{ flexWrap: "wrap" }}>
-                  {Images.Viewed.map((img, imgIndex) => (
-                    <Image
-                      source={{ uri: img }}
-                      key={`viewed-${img}`}
-                      resizeMode="cover"
-                      style={styles.thumb}
-                    />
-                  ))}
+                  <Block flex >
+                    <Block flex width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Block middle style={{ marginTop: 10, marginBottom: 16 }}>
+                        <Block style={styles.divider} />
+                        <Text color="#5A7E64" size={20} bold style={{ textAlign: 'left', marginTop: 20, marginBottom: 10 }} >
+                          Tus Pedidos más recientes:</Text>
+
+                      </Block>
+
+                      <Block center>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
+                            VER TODOS
+                          </Text>
+                        </Button>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
+                            VER TODOS
+                          </Text>
+                        </Button>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
+                            VER TODOS
+                          </Text>
+                        </Button>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
+                            VER TODOS
+                          </Text>
+                        </Button>
+                        <Button color="primary" style={styles.createButton}
+                          onPress={() => navigation.navigate("App")} //aquí navega a la pantalla principal
+                        >
+                          <Text bold size={14} color={argonTheme.COLORS.PRIMARY}>
+                            VER TODOS
+                          </Text>
+                        </Button>
+                      </Block>
+                    </Block>
+                    {/* aqui */}
+
+
+                  </Block>
                 </Block>
-              </Block>
-          </Block>
-        </Block>
-                  </ScrollView>*/}
-      </Block>
+              </ScrollView>
+            </Block>
+          </Block >
+        </ImageBackground >
+      </Block >
+
     );
   }
 }
 
 const styles = StyleSheet.create({
-  profile: {
-    marginTop: Platform.OS === "android" ? -HeaderHeight : 0,
-    // marginBottom: -HeaderHeight * 2,
-    flex: 1
-  },
-  profileContainer: {
-    width: width,
-    height: height,
-    padding: 0,
+  registerContainer: {
+    width: width * 0.9,
+    height: height * 0.68,
+    marginTop: height * 0.08,
+    backgroundColor: "#F4F5F7",
+    borderRadius: 20,
+    shadowColor: argonTheme.COLORS.BLACK,
+    paddingLeft: 10,
+    paddingRight: 10,
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowRadius: 8,
+    shadowOpacity: 0.1,
+    elevation: 1,
     zIndex: 1
+
   },
-  profileBackground: {
-    width: width,
-    height: height / 2
+
+
+  createButton: {
+    width: width * 0.7,
+    borderRadius: 20,
+    borderColor: argonTheme.COLORS.PRIMARY,
+    borderWidth: 1,
+    backgroundColor: argonTheme.COLORS.WHITE,
+    marginTop: 5,
+    marginBottom: width * 0.1,
   },
   profileCard: {
-    // position: "relative",
+    position: "relative",
     padding: theme.SIZES.BASE,
     marginHorizontal: theme.SIZES.BASE,
-    marginTop: 65,
+    marginTop: 80,
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
-    backgroundColor: theme.COLORS.WHITE,
+    backgroundColor: theme.COLORS.PRIMARY,
     shadowColor: "black",
     shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 8,
+    shadowRadius: 25,
     shadowOpacity: 0.2,
-    zIndex: 2
-  },
-  info: {
-    paddingHorizontal: 80
-  },
-  avatarContainer: {
+  }, avatarContainer: {
     position: "relative",
     marginTop: -80,
 
   },
   avatar: {
-    width: 124,
-    height: 124,
-    borderRadius: 62,
+    width: 160,
+    height: 160,
+    borderRadius: 85,
     borderColor: "white",
-    borderWidth: 3
-  },
-  nameInfo: {
-    marginTop: 35
+    borderWidth: 4,
+    zIndex: 3
+
+  }, nameInfo: {
+    marginTop: 0
   },
   divider: {
-    width: "90%",
+    width: "100%",
     borderWidth: 1,
-    borderColor: "#E9ECEF"
+    borderColor: argonTheme.COLORS.PRIMARY
   },
-  thumb: {
-    borderRadius: 4,
-    marginVertical: 4,
-    alignSelf: "center",
-    width: thumbMeasure,
-    height: thumbMeasure
-  }
+  verticaldivider: {
+    width: "0.5%",
+    borderWidth: 1,
+    borderColor: argonTheme.COLORS.PRIMARY,
+    marginHorizontal: 40
+  },
+  termsButton: {
+    width: width * 0.4,
+    elevation: 0,
+  },
+
 });
 
 export default Profile;
