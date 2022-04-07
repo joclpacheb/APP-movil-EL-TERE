@@ -47,7 +47,10 @@ const Register = ({ navigation }) => {
   };
 
   const handleChangeForm = (fieldName = "", value) => {
-    setFormData({ [fieldName]: value });
+    setFormData((prevState) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
   };
 
   return (
