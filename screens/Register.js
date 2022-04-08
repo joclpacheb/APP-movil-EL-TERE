@@ -38,7 +38,7 @@ const Register = ({ navigation }) => {
   const registerUser = async () => {
     try {
       // TODO: connect and test
-      // const data = await authAPI.register(form)
+      const data = await authAPI.register(formData)
       // send petition
       showSuccesToast("Usuario registrado correctamente");
 
