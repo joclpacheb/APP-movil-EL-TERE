@@ -38,10 +38,7 @@ const Login = ({ navigation }) => {
 
   const login = async () => {
     try {
-      console.log(form);
-      // showSuccesToast("Login Successful");
-      // const { data } = await authAPI.login(form)
-      // navigation.navigate("App");
+      const { data } = await authAPI.login(form);
 
       // TODO: delete after connect to backend
       await AsyncStorage.setItem(
